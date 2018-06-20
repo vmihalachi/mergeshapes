@@ -84,7 +84,7 @@ class MergeShapesDialog(QDialog, Ui_MergeShapesDialog):
 
     def inputFile(self):
         (files, encoding) = selopenDialog(self)
-        if files.isEmpty() or encoding is None:
+        if len(files) == 0 or encoding is None:
             self.inputFiles = None
             return
 
@@ -293,12 +293,12 @@ class MergeShapesDialog(QDialog, Ui_MergeShapesDialog):
             if layerGeometry == QGis.Polygon and geomType == 0:
                 outShapes.append(fileName)
             elif layerGeometry == QGis.Line and geomType == 1:
-                outShapes,append(fileName)
+                outShapes.append(fileName)
             elif layerGeometry == QGis.Point and geomType == 2:
                 outShapes.append(fileName)
 
         if len(outShapes) == 0:
-            return None
+            return []
 
         return outShapes
 
